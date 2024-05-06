@@ -27,9 +27,9 @@ class Player(BasePlayer):
     name = models.LongStringField()
     a1_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 100")
     a2_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 200")
-    a3_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 300")
+    a3_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 250")
     a4_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 400")
-    a5_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 500")
+    a5_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 450")
     money_for_round = models.IntegerField()
     total_profit = models.IntegerField()
     profit = models.IntegerField()
@@ -57,7 +57,7 @@ class Player(BasePlayer):
 A = [10, 20, 30, 40, 50]
 B = [0, 0, 0, 0, 0]
 C_ = [0, 0, 0, 0, 0]
-Costs = [100, 200, 300, 400, 500]
+Costs = [100, 200, 250, 400, 450]
 
 
 
