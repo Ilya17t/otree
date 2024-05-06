@@ -1,0 +1,26 @@
+{{ block title }}
+    Page title
+{{ endblock }}
+
+{% block content %}
+    Ваш бюджет:
+    {{ player.money }}<br/>
+    Спрос в прошлом раунде:<br/>
+    а1: {{ player.b1 }}<br/>
+    а2: {{ player.b2 }}<br/>
+    а3: {{ player.b3 }}<br/>
+    а4: {{ player.b4 }}<br/>
+    а5: {{ player.b5 }}<br/>
+    Цена на товары:<br/>
+    а1: {{ player.a1_price }}<br/>
+    а2: {{ player.a2_price }}<br/>
+    а3: {{ player.a3_price }}<br/>
+    а4: {{ player.a4_price }}<br/>
+    а5: {{ player.a5_price }}<br/>
+    Выбор количества товара.
+
+    {{ formfields }}
+
+    {{ next_button }}
+
+{%   endblock %}
