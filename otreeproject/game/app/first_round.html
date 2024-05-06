@@ -1,0 +1,20 @@
+{{ block title }}
+    Page title
+{{ endblock }}
+
+{% block content %}
+    Ваш бюджет:
+    {{ player.money_for_round }}<br/>
+    Цена на товары:<br/>
+    а1: {{ player.a1_price }}<br/>
+    а2: {{ player.a2_price }}<br/>
+    а3: {{ player.a3_price }}<br/>
+    а4: {{ player.a4_price }}<br/>
+    а5: {{ player.a5_price }}<br/>
+    Выбор количества товара.
+
+    {{ formfields }}
+
+    {{ next_button }}
+
+{%   endblock %}
