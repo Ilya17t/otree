@@ -11,7 +11,7 @@ Your app description
 class C(BaseConstants):
     NAME_IN_URL = 'app1'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 5
+    NUM_ROUNDS = 8
 
 
 
@@ -146,11 +146,12 @@ class Profit(Page):
     @staticmethod
     def before_next_page(player, timeout_happened):
         B = [0, 0, 0, 0, 0]
-        B[0] += player.a1_number
-        B[1] += player.a2_number
-        B[2] += player.a3_number
-        B[3] += player.a4_number
-        B[4] += player.a5_number
+        if player.wrong is not True:
+            B[0] += player.a1_number
+            B[1] += player.a2_number
+            B[2] += player.a3_number
+            B[3] += player.a4_number
+            B[4] += player.a5_number
         for guys in player.get_others_in_group():
             B[0] += guys.a1_number
             B[1] += guys.a2_number
