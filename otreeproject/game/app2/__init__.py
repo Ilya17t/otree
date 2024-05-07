@@ -181,22 +181,35 @@ class Profit(Page):
             C_[3] = prev_player.c4
             C_[4] = prev_player.c5
 
+        def proverka(a: float) -> float:
+            if a > 50:
+                return 50
+            elif a < -50:
+                return -50
+            else:
+                return a
 
+        sum_b = 0
+        for i in B:
+            sum_b += i
+        if sum_b != 0:
+            player.c1 = proverka(B[0] / sum_b * 100 - C_[0])
+            player.c2 = proverka(B[1] / sum_b * 100 - C_[1])
+            player.c3 = proverka(B[2] / sum_b * 100 - C_[2])
+            player.c4 = proverka(B[3] / sum_b * 100 - C_[3])
+            player.c5 = proverka(B[4] / sum_b * 100 - C_[4])
+        else:
+            player.c1 = -10
+            player.c2 = -10
+            player.c3 = -10
+            player.c4 = -10
+            player.c5 = -10
 
-        player.c1 = B[0] * people - C_[0]
-        player.c2 = B[1] * people - C_[1]
-        player.c3 = B[2] * people - C_[2]
-        player.c4 = B[3] * people - C_[3]
-        player.c5 = B[4] * people - C_[4]
-
-
-        A[0] = 10 * (1 + player.c1/100)
-        A[1] = 20 * (1 + player.c2/100)
-        A[2] = 30 * (1 + player.c3/100)
-        A[3] = 40 * (1 + player.c4/100)
-        A[4] = 50 * (1 + player.c5/100)
-
-
+        A[0] = player.a1_price * (1 + player.c1 / 100)
+        A[1] = player.a2_price * (1 + player.c2 / 100)
+        A[2] = player.a3_price * (1 + player.c3 / 100)
+        A[3] = player.a4_price * (1 + player.c4 / 100)
+        A[4] = player.a5_price * (1 + player.c5 / 100)
 
 
 
