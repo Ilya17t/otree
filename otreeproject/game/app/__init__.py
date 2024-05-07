@@ -25,11 +25,11 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     name = models.LongStringField()
-    a1_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 100")
-    a2_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 200")
-    a3_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 250")
-    a4_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 400")
-    a5_number = models.PositiveIntegerField(default=0, max=5, label="Стоимость для Вас 450")
+    a1_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 100")
+    a2_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 200")
+    a3_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 250")
+    a4_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 400")
+    a5_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 450")
     money_for_round = models.IntegerField()
     total_profit = models.IntegerField()
     profit = models.IntegerField()
@@ -74,6 +74,12 @@ total_profit = 0
 class first_round(Page):
     form_model = 'player'
     form_fields = ['a1_number', 'a2_number', 'a3_number', 'a4_number', 'a5_number']
+
+    @staticmethod
+    def js_vars(player):
+        return dict(
+            payoff=player.payoff,
+        )
 
     @staticmethod
     def vars_for_template(player):
@@ -170,11 +176,12 @@ class Profit(Page):
         player.c5 = B[4] * people - C_[4]
 
 
-        A[0] = player.a1_price * (1 + player.c1/100)
-        A[1] = player.a2_price * (1 + player.c2/100)
-        A[2] = player.a3_price * (1 + player.c3/100)
-        A[3] = player.a4_price * (1 + player.c4/100)
-        A[4] = player.a5_price * (1 + player.c5/100)
+        A[0] = 10 * (1 + player.c1/100)
+        A[1] = 20 * (1 + player.c2/100)
+        A[2] = 30 * (1 + player.c3/100)
+        A[3] = 40 * (1 + player.c4/100)
+        A[4] = 50 * (1 + player.c5/100)
+
 
 
 

@@ -1,8 +1,14 @@
+
 {{ block title }}
     Page title
 {{ endblock }}
 
+
 {% block content %}
+
+
+
+
     Ваш бюджет:
     {{ player.money_for_round }}<br/>
     Спрос в прошлом раунде:<br/>
@@ -11,6 +17,7 @@
     а3: {{ player.b3 }}<br/>
     а4: {{ player.b4 }}<br/>
     а5: {{ player.b5 }}<br/>
+
 
     Цена на товары:<br/>
     а1: {{ player.a1_price }}<br/>
@@ -24,4 +31,5 @@
 
     {{ next_button }}
 
-{%   endblock %}
+
+{% endblock %}
