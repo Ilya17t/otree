@@ -25,11 +25,11 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     name = models.LongStringField(label="Имя фамилия")
-    a1_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 100")
-    a2_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 200")
-    a3_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 250")
-    a4_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 400")
-    a5_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 450")
+    a1_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a2_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a3_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a4_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a5_number = models.PositiveIntegerField(default=0, max=5, label="")
     money_for_round = models.IntegerField()
     total_profit = models.IntegerField()
     profit = models.IntegerField()

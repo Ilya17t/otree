@@ -3,53 +3,56 @@
 {% block content %}
     Ваш бюджет:
     {{ player.money }}<br/>
- <!doctype html>
+<!doctype html>
 <html>
     <head>
         {% load otree static %}
         <link rel="stylesheet" href="{% static 'global/empty.css' %}"/>
-
     </head>
     <body>
         <table>
             <tr>
                 <td>Товар</td>
                 <td>Спрос</td>
+                <td>Ценность для игрока</td>>
                 <td>Цена</td>
+                <td>Выбор</td>
             </tr>
             <tr>
                 <td>a1</td>
                 <td>{{ player.b1 }}</td>
+                <td>100</td>
                 <td>{{ player.a1_price }}</td>
+                <td rowspan="5">{{ formfields }}</td>
             </tr>
             <tr>
                 <td>a2</td>
                 <td>{{ player.b2 }}</td>
-            <td>{{ player.a2_price }}</td>
+                <td>200</td>
+                <td>{{ player.a2_price }}</td>
             </tr>
             <tr>
                 <td>a3</td>
                 <td>{{ player.b3 }}</td>
+                <td>250</td>
                 <td>{{ player.a3_price }}</td>
             </tr>
             <tr>
                 <td>a4</td>
                 <td>{{ player.b4 }}</td>
+                <td>400</td>
                 <td>{{ player.a4_price }}</td>
             </tr>
             <tr>
                 <td>a5</td>
                 <td>{{ player.b5 }}</td>
+                <td>450</td>
                 <td>{{ player.a5_price }}</td>
             </tr>
         </table>
     </body>
 </html>
 
-
-
-
-<div class="box" id="two">{{ formfields }}</div>
 
     {{ next_button }}
 
