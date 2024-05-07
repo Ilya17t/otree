@@ -1,9 +1,4 @@
 
-{{ block title }}
-    Page title
-{{ endblock }}
-
-
 {% block content %}
 
 
@@ -11,25 +6,52 @@
 
     Ваш бюджет:
     {{ player.money_for_round }}<br/>
-    Спрос в прошлом раунде:<br/>
-    а1: {{ player.b1 }}<br/>
-    а2: {{ player.b2 }}<br/>
-    а3: {{ player.b3 }}<br/>
-    а4: {{ player.b4 }}<br/>
-    а5: {{ player.b5 }}<br/>
+<!doctype html>
+<html>
+    <head>
+        {% load otree static %}
+        <link rel="stylesheet" href="{% static 'global/empty.css' %}"/>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>Товар</td>
+                <td>Спрос</td>
+                <td>Цена</td>
+            </tr>
+            <tr>
+                <td>a1</td>
+                <td>{{ player.b1 }}</td>
+                <td>{{ player.a1_price }}</td>
+            </tr>
+            <tr>
+                <td>a2</td>
+                <td>{{ player.b2 }}</td>
+            <td>{{ player.a2_price }}</td>
+            </tr>
+            <tr>
+                <td>a3</td>
+                <td>{{ player.b3 }}</td>
+                <td>{{ player.a3_price }}</td>
+            </tr>
+            <tr>
+                <td>a4</td>
+                <td>{{ player.b4 }}</td>
+                <td>{{ player.a4_price }}</td>
+            </tr>
+            <tr>
+                <td>a5</td>
+                <td>{{ player.b5 }}</td>
+                <td>{{ player.a5_price }}</td>
+            </tr>
+        </table>
+    </body>
+</html>
 
 
-    Цена на товары:<br/>
-    а1: {{ player.a1_price }}<br/>
-    а2: {{ player.a2_price }}<br/>
-    а3: {{ player.a3_price }}<br/>
-    а4: {{ player.a4_price }}<br/>
-    а5: {{ player.a5_price }}<br/>
-    Выбор количества товара.
 
-    {{ formfields }}
+<div class="box" id="two">{{ formfields }}</div>
 
-    {{ next_button }}
-
+{{ next_button }}
 
 {% endblock %}
