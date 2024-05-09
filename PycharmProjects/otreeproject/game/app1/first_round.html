@@ -1,0 +1,95 @@
+
+{% block content %}
+    Номер раунда: {{ player.round_number }}<br/>
+    Ваш бюджет:
+    {{ player.money }}<br/>
+
+<big><big><big>Вы набрали на</big></big></big>> <h2><span id="projection"></span></h2>
+
+
+<!doctype html>
+<html>
+    <head>
+        {% load otree static %}
+        <link rel="stylesheet" href="{% static 'global/empty.css' %}"/>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>Товар</td>
+                <td>Спрос</td>
+                <td>Ценность для игрока</td>>
+                <td>Цена</td>
+                <td>Количество, тонн</td>
+            </tr>
+            <tr>
+                <td>Железо</td>
+                <td>{{ player.b1 }}</td>
+                <td>100</td>
+                <td>{{ player.a1_price }}</td>
+                <td rowspan="5">{{ formfields }}</td>
+            </tr>
+            <tr>
+                <td>Сталь</td>
+                <td>{{ player.b2 }}</td>
+                <td>200</td>
+                <td>{{ player.a2_price }}</td>
+            </tr>
+            <tr>
+                <td>Алюминий</td>
+                <td>{{ player.b3 }}</td>
+                <td>250</td>
+                <td>{{ player.a3_price }}</td>
+            </tr>
+            <tr>
+                <td>Серебро</td>
+                <td>{{ player.b4 }}</td>
+                <td>400</td>
+                <td>{{ player.a4_price }}</td>
+            </tr>
+            <tr>
+                <td>Платина</td>
+                <td>{{ player.b5 }}</td>
+                <td>450</td>
+                <td>{{ player.a5_price }}</td>
+            </tr>
+        </table>
+    </body>
+</html>
+
+    {{ next_button }}
+
+{{ endblock }}
+
+
+{% block scripts %}
+
+<script>
+    let projectionEle = document.getElementById('projection');
+
+    function recalc() {
+        let a1n = parseInt(forminputs.a1_number.value);
+        let a2n = parseInt(forminputs.a2_number.value);
+        let a3n = parseInt(forminputs.a3_number.value);
+        let a4n = parseInt(forminputs.a4_number.value);
+        let a5n = parseInt(forminputs.a5_number.value);
+
+        // isNaN is the javascript function that checks whether the value is a valid
+        // number. need to check this because the field might be empty or
+        // the user might have typed something other than a number.
+        let projection = js_vars.a1p * a1n + js_vars.a2p * a2n + js_vars.a3p * a3n + js_vars.a4p * a4n + js_vars.a5p * a5n
+        projectionEle.innerText = projection;
+
+}
+
+    forminputs.a1_number.oninput = recalc;
+    forminputs.a2_number.oninput = recalc;
+    forminputs.a3_number.oninput = recalc;
+    forminputs.a4_number.oninput = recalc;
+    forminputs.a5_number.oninput = recalc;
+
+</script>
+
+
+
+{%  endblock %}
