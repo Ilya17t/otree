@@ -30,7 +30,7 @@ class Player(BasePlayer):
     a3_number = models.PositiveIntegerField(default=0, max=5, label="")
     a4_number = models.PositiveIntegerField(default=0, max=5, label="")
     a5_number = models.PositiveIntegerField(default=0, max=5, label="")
-    money_for_round = models.IntegerField()
+    money_for_round = models.IntegerField(default=0)
     total_profit = models.IntegerField()
     profit = models.IntegerField()
     a1_price = models.FloatField()
@@ -96,7 +96,10 @@ class first_round(Page):
             player.b3 = prev_player.b3
             player.b4 = prev_player.b4
             player.b5 = prev_player.b5
-        player.money_for_round = random.randint(50, 150)
+
+        if player.money_for_round == 0:
+            player.money_for_round = random.randint(50, 150)
+
         player.a1_price = max(round(A[0], 1), 0)
         player.a2_price = max(round(A[1], 1), 0)
         player.a3_price = max(round(A[2], 1), 0)
@@ -104,7 +107,9 @@ class first_round(Page):
         player.a5_price = max(round(A[4], 1), 0)
 
 
-
+    @staticmethod
+    def js_vars(player: Player):
+        return dict(a1p = player.a1_price, a2p = player.a2_price, a3p = player.a3_price, a4p = player.a4_price, a5p = player.a5_price)
 
 
 

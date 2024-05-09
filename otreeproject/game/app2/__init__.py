@@ -26,11 +26,11 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     name = models.LongStringField(label="Имя фамилия")
     money = models.FloatField()
-    a1_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 100")
-    a2_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 200")
-    a3_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 250")
-    a4_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 400")
-    a5_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 450")
+    a1_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a2_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a3_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a4_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a5_number = models.PositiveIntegerField(default=0, max=5, label="")
     total_profit = models.FloatField()
     profit = models.IntegerField()
     a1_price = models.FloatField()
@@ -115,7 +115,9 @@ class first_round(Page):
                 'player.status': player.wrong
                 }
 
-
+    @staticmethod
+    def js_vars(player: Player):
+        return dict(a1p = player.a1_price, a2p = player.a2_price, a3p = player.a3_price, a4p = player.a4_price, a5p = player.a5_price)
 
 
 
@@ -227,7 +229,7 @@ class Results(Page):
         return player.round_number == C.NUM_ROUNDS
     @staticmethod
     def vars_for_template(player):
-        player.total_profit = (player.total_profit ** 2 + player.money ** 2)/1000
+        player.total_profit = (player.total_profit ** 2 + 100 * (player.money ** 2))/1000
         return {
             'profit': player.total_profit
         }

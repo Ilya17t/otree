@@ -1,7 +1,12 @@
 
 {% block content %}
+    Номер раунда: {{ player.round_number }}<br/>
     Ваш бюджет:
     {{ player.money }}<br/>
+
+<big><big><big>Вы набрали на</big></big></big>> <h2><span id="projection"></span></h2>
+
+
 <!doctype html>
 <html>
     <head>
@@ -52,7 +57,39 @@
     </body>
 </html>
 
-
     {{ next_button }}
 
-{%   endblock %}
+{{ endblock }}
+
+
+{% block scripts %}
+
+<script>
+    let projectionEle = document.getElementById('projection');
+
+    function recalc() {
+        let a1n = parseInt(forminputs.a1_number.value);
+        let a2n = parseInt(forminputs.a2_number.value);
+        let a3n = parseInt(forminputs.a3_number.value);
+        let a4n = parseInt(forminputs.a4_number.value);
+        let a5n = parseInt(forminputs.a5_number.value);
+
+        // isNaN is the javascript function that checks whether the value is a valid
+        // number. need to check this because the field might be empty or
+        // the user might have typed something other than a number.
+        let projection = js_vars.a1p * a1n + js_vars.a2p * a2n + js_vars.a3p * a3n + js_vars.a4p * a4n + js_vars.a5p * a5n
+        projectionEle.innerText = projection;
+
+}
+
+    forminputs.a1_number.oninput = recalc;
+    forminputs.a2_number.oninput = recalc;
+    forminputs.a3_number.oninput = recalc;
+    forminputs.a4_number.oninput = recalc;
+    forminputs.a5_number.oninput = recalc;
+
+</script>
+
+
+
+{%  endblock %}

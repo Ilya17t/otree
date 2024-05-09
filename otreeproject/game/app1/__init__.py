@@ -12,6 +12,7 @@ class C(BaseConstants):
     NAME_IN_URL = 'app1'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 8
+    APR = 1
 
 
 
@@ -26,11 +27,11 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     name = models.LongStringField(label="Имя фамилия")
     money = models.FloatField()
-    a1_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 100")
-    a2_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 200")
-    a3_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 250")
-    a4_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 400")
-    a5_number = models.PositiveIntegerField(default=0, max=5, label="Ценность для Вас 450")
+    a1_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a2_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a3_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a4_number = models.PositiveIntegerField(default=0, max=5, label="")
+    a5_number = models.PositiveIntegerField(default=0, max=5, label="")
     total_profit = models.IntegerField()
     profit = models.IntegerField()
     a1_price = models.FloatField()
@@ -49,6 +50,7 @@ class Player(BasePlayer):
     b3 = models.IntegerField()
     b4 = models.IntegerField()
     b5 = models.IntegerField()
+    button = models.FloatField()
 
 
 
@@ -81,6 +83,8 @@ class first_round(Page):
 
 
 
+
+
     @staticmethod
     def vars_for_template(player):
         if player.round_number == 1:
@@ -103,6 +107,7 @@ class first_round(Page):
         player.a3_price = max(round(A[2], 1), 0)
         player.a4_price = max(round(A[3], 1), 0)
         player.a5_price = max(round(A[4], 1), 0)
+        player.button = player.a1_number * player.a1_price + player.a2_number * player.a2_price + player.a3_number * player.a3_price + player.a4_number * player.a4_price + player.a5_number * player.a5_price
 
 
         return {
@@ -115,7 +120,9 @@ class first_round(Page):
                 'player.status': player.wrong
                 }
 
-
+    @staticmethod
+    def js_vars(player: Player):
+        return dict(a1p = player.a1_price, a2p = player.a2_price, a3p = player.a3_price, a4p = player.a4_price, a5p = player.a5_price)
 
 
 
