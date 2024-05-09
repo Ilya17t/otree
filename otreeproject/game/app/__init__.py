@@ -119,7 +119,7 @@ class Profit(Page):
     @staticmethod
     def vars_for_template(player):
         player.wrong = False
-        if player.money_for_round < player.a1_number * player.a1_price + player.a2_number * player.a2_price + player.a3_number * player.a3_price + player.a4_number * player.a4_price + player.a5_number * player.a5_price:
+        if player.money_for_round < player.a1_number * player.a1_price + player.a2_number * player.a2_price + player.a3_number * player.a3_price + player.a4_number * player.a4_price + player.a5_number * player.a5_price + 0.01:
             player.wrong = True
         player.profit = 0
         if player.wrong:

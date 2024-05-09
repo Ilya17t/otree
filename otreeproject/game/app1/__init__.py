@@ -107,7 +107,6 @@ class first_round(Page):
         player.a3_price = max(round(A[2], 1), 0)
         player.a4_price = max(round(A[3], 1), 0)
         player.a5_price = max(round(A[4], 1), 0)
-        player.button = player.a1_number * player.a1_price + player.a2_number * player.a2_price + player.a3_number * player.a3_price + player.a4_number * player.a4_price + player.a5_number * player.a5_price
 
 
         return {
@@ -131,7 +130,7 @@ class Profit(Page):
     @staticmethod
     def vars_for_template(player):
         player.wrong = False
-        check = player.a1_number * player.a1_price + player.a2_number * player.a2_price + player.a3_number * player.a3_price + player.a4_number * player.a4_price + player.a5_number * player.a5_price
+        check = player.a1_number * player.a1_price + player.a2_number * player.a2_price + player.a3_number * player.a3_price + player.a4_number * player.a4_price + player.a5_number * player.a5_price + 0.01
         if player.money < check:
             player.wrong = True
             check = 0

@@ -126,7 +126,7 @@ class Profit(Page):
     @staticmethod
     def vars_for_template(player):
         player.wrong = False
-        check = player.a1_number * player.a1_price + player.a2_number * player.a2_price + player.a3_number * player.a3_price + player.a4_number * player.a4_price + player.a5_number * player.a5_price
+        check = player.a1_number * player.a1_price + player.a2_number * player.a2_price + player.a3_number * player.a3_price + player.a4_number * player.a4_price + player.a5_number * player.a5_price + 0.01
         if player.money < check:
             player.wrong = True
             check = 0
