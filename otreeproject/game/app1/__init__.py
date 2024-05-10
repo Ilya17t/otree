@@ -131,7 +131,7 @@ class Profit(Page):
     def vars_for_template(player):
         player.wrong = False
         check = player.a1_number * player.a1_price + player.a2_number * player.a2_price + player.a3_number * player.a3_price + player.a4_number * player.a4_price + player.a5_number * player.a5_price
-        if player.money < check + 0.1:
+        if player.money - check + 0.1 < 0:
             player.wrong = True
             check = 0
         player.profit = 0
