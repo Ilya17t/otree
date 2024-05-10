@@ -229,7 +229,7 @@ class Results(Page):
         return player.round_number == C.NUM_ROUNDS
     @staticmethod
     def vars_for_template(player):
-        player.total_profit = (player.total_profit ** 2 + 10 * (player.money ** 2))/1000
+        player.total_profit = (player.total_profit ** 2 + 100 * (player.money ** 2))/1000
         return {
             'profit': player.total_profit
         }
