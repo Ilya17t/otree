@@ -126,8 +126,8 @@ class Profit(Page):
     @staticmethod
     def vars_for_template(player):
         player.wrong = False
-        check = player.a1_number * player.a1_price + player.a2_number * player.a2_price + player.a3_number * player.a3_price + player.a4_number * player.a4_price + player.a5_number * player.a5_price + 0.01
-        if player.money < check:
+        check = player.a1_number * player.a1_price + player.a2_number * player.a2_price + player.a3_number * player.a3_price + player.a4_number * player.a4_price + player.a5_number * player.a5_price
+        if player.money < check + 0.1:
             player.wrong = True
             check = 0
         player.profit = 0
@@ -229,7 +229,7 @@ class Results(Page):
         return player.round_number == C.NUM_ROUNDS
     @staticmethod
     def vars_for_template(player):
-        player.total_profit = (player.total_profit ** 2 + 100 * (player.money ** 2))/1000
+        player.total_profit = (player.total_profit ** 2 + 10 * (player.money ** 2))/1000
         return {
             'profit': player.total_profit
         }
